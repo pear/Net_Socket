@@ -109,7 +109,7 @@ class Net_Socket extends PEAR {
         }
         
         if (!$fp) {
-            return new PEAR_Error($errstr, $errno);
+            return $this->raiseError($errstr, $errno);
         }
 
         $this->fp = $fp;
@@ -131,7 +131,7 @@ class Net_Socket extends PEAR {
             $this->fp = null;
             return true;
         }
-        return new PEAR_Error("not connected");
+        return $this->raiseError("not connected");
     }
     // }}}
     
@@ -164,7 +164,7 @@ class Net_Socket extends PEAR {
             socket_set_blocking($this->fp, $this->blocking);
             return true;
         }
-        return new PEAR_Error("not connected");
+        return $this->raiseError("not connected");
     }
     // }}}
 
@@ -183,7 +183,7 @@ class Net_Socket extends PEAR {
             socket_set_timeout($this->fp, $seconds, $microseconds);
             return true;
         }
-        return new PEAR_Error("not connected");
+        return $this->raiseError("not connected");
     }
     // }}}
 
@@ -206,7 +206,7 @@ class Net_Socket extends PEAR {
         if (is_resource($this->fp)) {
             return socket_get_status($this->fp);
         }
-        return new PEAR_Error("not connected");
+        return $this->raiseError("not connected");
     }
     // }}}
     
@@ -222,7 +222,7 @@ class Net_Socket extends PEAR {
         if (is_resource($this->fp)) {
             return fgets($this->fp, $size);
         }
-        return new PEAR_Error("not connected");
+        return $this->raiseError("not connected");
     }
     // }}}
     
@@ -242,7 +242,7 @@ class Net_Socket extends PEAR {
         if (is_resource($this->fp)) {
             return fread($this->fp, $size);
         }
-        return new PEAR_Error("not connected");
+        return $this->raiseError("not connected");
     }
     // }}}
     
@@ -257,7 +257,7 @@ class Net_Socket extends PEAR {
         if (is_resource($this->fp)) {
             return fwrite($this->fp, $data);
         }
-        return new PEAR_Error("not connected");
+        return $this->raiseError("not connected");
     }
     // }}}
     
@@ -272,7 +272,7 @@ class Net_Socket extends PEAR {
         if (is_resource($this->fp)) {
             return $this->write($data . "\r\n");
         }
-        return new PEAR_Error("not connected");
+        return $this->raiseError("not connected");
     }
     // }}}
     
@@ -300,7 +300,7 @@ class Net_Socket extends PEAR {
         if (is_resource($this->fp)) {
             return ord($this->read(1));
         }
-        return new PEAR_Error("not connected");
+        return $this->raiseError("not connected");
     }
     // }}}
     
@@ -317,7 +317,7 @@ class Net_Socket extends PEAR {
             $buf = $this->read(2);
             return (ord($buf[0]) + (ord($buf[1]) << 8));
         }
-        return new PEAR_Error("not connected");
+        return $this->raiseError("not connected");
     }
     // }}}
     
@@ -335,7 +335,7 @@ class Net_Socket extends PEAR {
             return (ord($buf[0]) + (ord($buf[1]) << 8) +
                     (ord($buf[2]) << 16) + (ord($buf[3]) << 24));
         }
-        return new PEAR_Error("not connected");
+        return $this->raiseError("not connected");
     }
     // }}}
     
@@ -355,7 +355,7 @@ class Net_Socket extends PEAR {
             }
             return $string;
         }
-        return new PEAR_Error("not connected");
+        return $this->raiseError("not connected");
     }
     // }}}
     
@@ -373,7 +373,7 @@ class Net_Socket extends PEAR {
             return sprintf("%s.%s.%s.%s", ord($buf[0]), ord($buf[1]),
                            ord($buf[2]), ord($buf[3]));
         }
-        return new PEAR_Error("not connected");
+        return $this->raiseError("not connected");
     }
     // }}}
     
@@ -401,7 +401,7 @@ class Net_Socket extends PEAR {
             }
             return $line;
         }
-        return new PEAR_ERROR("not connected");
+        return $this->raiseError("not connected");
     }
     // }}}
     
@@ -421,7 +421,7 @@ class Net_Socket extends PEAR {
                 $data .= $this->read($this->lineLength);
             return $data;
         }
-        return new PEAR_Error("not connected");
+        return $this->raiseError("not connected");
     }
     // }}}
     

@@ -24,12 +24,20 @@ byte-order ip addresses).
     </maintainer>
   </maintainers>
   <release>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <state>stable</state>
-    <date>2002-04-01</date>
-    <notes>First independent release of Net_Socket.</notes>
+    <date>2002-04-04</date>
+    <notes>Touch up error handling.</notes>
     <filelist>
       <file role="php" baseinstalldir="Net">Socket.php</file>
     </filelist>
   </release>
+  <changelog>
+    <release>
+      <version>1.0</version>
+      <state>stable</state>
+      <date>2002-04-01</date>
+      <notes>First independent release of Net_Socket.</notes>
+    </release>
+  </changelog>
 </package>
