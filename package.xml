@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE package SYSTEM "../../php4/pehttp://pear.php.net/dtd/package-1.0">
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
 <package version="1.0">
   <name>Net_Socket</name>
   <summary>Network Socket Interface</summary>
@@ -24,16 +24,22 @@ byte-order ip addresses).
       <email>chuck@horde.org</email>
     </maintainer>
   </maintainers>
+
   <release>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <state>stable</state>
-    <date>2002-04-04</date>
-    <notes>Touch up error handling.</notes>
-    <license>PHP 2.02</license>
+    <date>2004-04-26</date>
+    <notes>
+    Fixes for several longstanding bugs. Allow setting of stream
+    context. Correctly read lines that only end in \n. Suppress PHP
+    warnings.
+    </notes>
+
     <filelist>
       <file role="php" baseinstalldir="Net">Socket.php</file>
     </filelist>
   </release>
+
   <changelog>
     <release>
       <version>1.0</version>
@@ -41,5 +47,12 @@ byte-order ip addresses).
       <date>2002-04-01</date>
       <notes>First independent release of Net_Socket.</notes>
     </release>
+    <release>
+      <version>1.0.1</version>
+      <state>stable</state>
+      <date>2002-04-04</date>
+      <notes>Touch up error handling.</notes>
+    </release>
   </changelog>
+
 </package>
