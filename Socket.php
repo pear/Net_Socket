@@ -98,7 +98,7 @@ class Net_Socket {
      * @access public
      * @return mixed true on success or error object
      */
-    function connect($addr, $port, $persistent = null, $timeout = null, $options = null)
+    function connect($addr, $port = 0, $persistent = null, $timeout = null, $options = null)
     {
         if (is_resource($this->fp)) {
             @fclose($this->fp);
