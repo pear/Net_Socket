@@ -9,6 +9,7 @@ and non-blocking operation, with different reading and writing modes
 (byte-wise, block-wise, line-wise and special formats like network
 byte-order ip addresses).
   </description>
+  <license>PHP License</license>
   <maintainers>
     <maintainer>
       <user>ssb</user>

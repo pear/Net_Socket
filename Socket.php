@@ -13,7 +13,7 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: Stig Bakken <ssb@fast.no>                                   |
+// | Authors: Stig Bakken <ssb@php.net>                                   |
 // |          Chuck Hagenbuch <chuck@horde.org>                           |
 // +----------------------------------------------------------------------+
 //
@@ -26,7 +26,7 @@ require_once 'PEAR.php';
  * Generalized Socket class. More docs to be written.
  *
  * @version 1.0
- * @author Stig Bakken <ssb@fast.no>
+ * @author Stig Bakken <ssb@php.net>
  * @author Chuck Hagenbuch <chuck@horde.org>
  */
 class Net_Socket extends PEAR {
