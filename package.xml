@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "../../php4/pear/package.dtd">
+<package version="1.0">
+  <name>Net_Socket</name>
+  <summary>Network Socket Interface</summary>
+  <description>
+Net_Socket is a class interface to TCP sockets.  It provides blocking
+and non-blocking operation, with different reading and writing modes
+(byte-wise, block-wise, line-wise and special formats like network
+byte-order ip addresses).
+  </description>
+  <maintainers>
+    <maintainer>
+      <user>ssb</user>
+      <role>lead</role>
+      <name>Stig Sæther Bakken</name>
+      <email>stig@php.net</email>
+    </maintainer>
+    <maintainer>
+      <user>chagenbu</user>
+      <role>lead</role>
+      <name>Chuck Hagenbuch</name>
+      <email>chuck@horde.org</email>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>1.0</version>
+    <state>stable</state>
+    <date>2002-04-01</date>
+    <notes>First independent release of Net_Socket.</notes>
+    <filelist>
+      <file role="php" baseinstalldir="Net">Socket.php</file>
+    </filelist>
+  </release>
+</package>
