@@ -285,7 +285,7 @@ class Net_Socket {
     function writeLine ($data)
     {
         if (is_resource($this->fp)) {
-            return $this->write($data . "\r\n");
+            return fwrite($this->fp, $data . "\r\n");
         }
         return $this->raiseError("not connected");
     }
@@ -311,7 +311,7 @@ class Net_Socket {
     function readByte()
     {
         if (is_resource($this->fp)) {
-            return ord($this->read(1));
+            return ord(fread($this->fp, 1));
         }
         return $this->raiseError("not connected");
     }
@@ -326,7 +326,7 @@ class Net_Socket {
     function readWord()
     {
         if (is_resource($this->fp)) {
-            $buf = $this->read(2);
+            $buf = fread($this->fp, 2);
             return (ord($buf[0]) + (ord($buf[1]) << 8));
         }
         return $this->raiseError("not connected");
@@ -342,7 +342,7 @@ class Net_Socket {
     function readInt()
     {
         if (is_resource($this->fp)) {
-            $buf = $this->read(4);
+            $buf = fread($this->fp, 4);
             return (ord($buf[0]) + (ord($buf[1]) << 8) +
                     (ord($buf[2]) << 16) + (ord($buf[3]) << 24));
         }
@@ -360,7 +360,7 @@ class Net_Socket {
     {
         if (is_resource($this->fp)) {
             $string = '';
-            while (($char = $this->read(1)) != "\x00")  {
+            while (($char = fread($this->fp, 1)) != "\x00")  {
                 $string .= $char;
             }
             return $string;
@@ -378,7 +378,7 @@ class Net_Socket {
     function readIPAddress()
     {
         if (is_resource($this->fp)) {
-            $buf = $this->read(4);
+            $buf = fread($this->fp, 4);
             return sprintf("%s.%s.%s.%s", ord($buf[0]), ord($buf[1]),
                            ord($buf[2]), ord($buf[3]));
         }
@@ -399,8 +399,8 @@ class Net_Socket {
         if (is_resource($this->fp)) {
             $line = '';
             $timeout = time() + $this->timeout;
-            while (!$this->eof() && (!$this->timeout || time() < $timeout)) {
-                $line .= $this->gets($this->lineLength);
+            while (!feof($this->fp) && (!$this->timeout || time() < $timeout)) {
+                $line .= fgets($this->fp, $this->lineLength);
                 if (substr($line, -2) == "\r\n" ||
                     substr($line, -1) == "\n") {
                     return rtrim($line, "\r\n");
@@ -423,8 +423,9 @@ class Net_Socket {
     {
         if (is_resource($this->fp)) {
             $data = '';
-            while (!$this->eof())
-                $data .= $this->read($this->lineLength);
+            while (!feof($this->fp)) {
+                $data .= fread($this->fp, $this->lineLength);
+            }
             return $data;
         }
         return $this->raiseError("not connected");
