@@ -99,7 +99,9 @@ class Net_Socket extends PEAR {
             $this->fp = null;
         }
 
-        if (strspn($addr, '.0123456789') == strlen($addr)) {
+        if (!$addr) {
+            return $this->raiseError('$addr cannot be empty');
+        } elseif (strspn($addr, '.0123456789') == strlen($addr) || substr($addr, 0, 1) == '/') {
             $this->addr = $addr;
         } else {
             $this->addr = gethostbyname($addr);
