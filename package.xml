@@ -26,13 +26,11 @@ byte-order ip addresses).
   </maintainers>
 
   <release>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <state>stable</state>
-    <date>2004-12-08</date>
+    <date>2004-12-13</date>
     <notes>
-      Optimize away some duplicate is_resource() calls.
-      Better solution for eof() on blocking sockets [#1427].
-      Add select() implementation [#1428].
+      Restore support for unix sockets (Bug #2961).
     </notes>
 
     <filelist>
@@ -71,6 +69,14 @@ byte-order ip addresses).
         Optimize away some duplicate is_resource() calls.
         Better solution for eof() on blocking sockets [#1427].
         Add select() implementation [#1428].
+      </notes>
+    </release>
+    <release>
+      <version>1.0.4</version>
+      <state>stable</state>
+      <date>2004-12-13</date>
+      <notes>
+        Restore support for unix sockets (Bug #2961).
       </notes>
     </release>
   </changelog>
