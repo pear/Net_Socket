@@ -103,9 +103,9 @@ class Net_Socket extends PEAR {
         $errno = 0;
         $errstr = '';
         if ($this->timeout) {
-            $fp = $openfunc($this->addr, $this->port, $errno, $errstr, $this->timeout);
+            $fp = @$openfunc($this->addr, $this->port, $errno, $errstr, $this->timeout);
         } else {
-            $fp = $openfunc($this->addr, $this->port, $errno, $errstr);
+            $fp = @$openfunc($this->addr, $this->port, $errno, $errstr);
         }
         
         if (!$fp) {
