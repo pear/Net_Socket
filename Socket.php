@@ -422,10 +422,9 @@ class Net_Socket extends PEAR
             $timeout = time() + $this->timeout;
             while (!$this->eof() && (!$this->timeout || time() < $timeout)) {
                 $line .= $this->gets($this->lineLength);
-                if (strlen($line) >= 2 &&
-                    (substr($line, -2) == "\r\n" ||
-                     substr($line, -1) == "\n")) {
-                    return rtrim($line);
+                if (substr($line, -2) == "\r\n" ||
+                    substr($line, -1) == "\n") {
+                    return rtrim($line, "\r\n");
                 }
             }
             return $line;
