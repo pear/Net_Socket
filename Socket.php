@@ -29,8 +29,7 @@ require_once 'PEAR.php';
  * @author Stig Bakken <ssb@php.net>
  * @author Chuck Hagenbuch <chuck@horde.org>
  */
-class Net_Socket extends PEAR
-{
+class Net_Socket extends PEAR {
     // {{{ properties
 
     /** Socket file pointer. */
@@ -115,9 +114,9 @@ class Net_Socket extends PEAR
             $fp = $openfunc($this->addr, $this->port, $errno, $errstr, $timeout, $context);
         } else {
             if ($this->timeout) {
-                $fp = $openfunc($this->addr, $this->port, $errno, $errstr, $this->timeout);
+                $fp = @$openfunc($this->addr, $this->port, $errno, $errstr, $this->timeout);
             } else {
-                $fp = $openfunc($this->addr, $this->port, $errno, $errstr);
+                $fp = @$openfunc($this->addr, $this->port, $errno, $errstr);
             }
         }
 
@@ -455,4 +454,3 @@ class Net_Socket extends PEAR
     // }}}
 
 }
-?>
