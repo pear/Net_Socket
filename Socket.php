@@ -19,6 +19,8 @@
 //
 // $Id$
 
+require_once 'PEAR.php';
+
 define('NET_SOCKET_READ',  1);
 define('NET_SOCKET_WRITE', 2);
 define('NET_SOCKET_ERROR', 3);
@@ -30,7 +32,7 @@ define('NET_SOCKET_ERROR', 3);
  * @author Stig Bakken <ssb@php.net>
  * @author Chuck Hagenbuch <chuck@horde.org>
  */
-class Net_Socket {
+class Net_Socket extends PEAR {
 
     /**
      * Socket file pointer.
@@ -75,15 +77,6 @@ class Net_Socket {
      * @var integer $lineLength
      */
     var $lineLength = 2048;
-
-    /**
-     * Constructs a new Net_Socket object.
-     *
-     * @access public
-     */
-    function Net_Socket()
-    {
-    }
 
     /**
      * Connect to the specified port. If called when the socket is
@@ -483,20 +476,6 @@ class Net_Socket {
         }
 
         return $this->raiseError('not connected');
-    }
-
-    /**
-     * Raise an error message by including PEAR.php and calling
-     * PEAR::raiseError(). Means we don't have to extend or include
-     * the PEAR base class for non-error operation.
-     *
-     * @param string  $errstr  The error description.
-     * @param integer $errno   (optional) The error code, if any.
-     */
-    function raiseError($errstr, $errno = null)
-    {
-        require_once 'PEAR.php';
-        return PEAR::raiseError($errstr, $errno);
     }
 
 }
