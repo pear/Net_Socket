@@ -101,21 +101,22 @@ class Net_Socket extends PEAR {
 
         if (!$addr) {
             return $this->raiseError('$addr cannot be empty');
-        } elseif (strspn($addr, '.0123456789') == strlen($addr) || substr($addr, 0, 1) == '/') {
+        } elseif (strspn($addr, '.0123456789') == strlen($addr)) {
             $this->addr = $addr;
         } else {
-            $this->addr = gethostbyname($addr);
-            if (strcmp($this->addr, $addr) == 0) {
-                return $this->raiseError("unable to lookup hostname '$addr'");
-            }
+            $this->addr = @gethostbyname($addr);
         }
+
         $this->port = $port % 65536;
+
         if ($persistent !== null) {
             $this->persistent = $persistent;
         }
+
         if ($timeout !== null) {
             $this->timeout = $timeout;
         }
+
         $openfunc = $this->persistent ? 'pfsockopen' : 'fsockopen';
         $errno = 0;
         $errstr = '';
