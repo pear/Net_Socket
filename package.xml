@@ -26,11 +26,11 @@ byte-order ip addresses).
   </maintainers>
 
   <release>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <state>stable</state>
-    <date>2004-12-13</date>
+    <date>2005-01-11</date>
     <notes>
-      Restore support for unix sockets (Bug #2961).
+      Don't rely on gethostbyname() for error checking (Bug #3100).
     </notes>
 
     <filelist>
@@ -77,6 +77,14 @@ byte-order ip addresses).
       <date>2004-12-13</date>
       <notes>
         Restore support for unix sockets (Bug #2961).
+      </notes>
+    </release>
+    <release>
+      <version>1.0.4</version>
+      <state>stable</state>
+      <date>2005-01-11</date>
+      <notes>
+        Don't rely on gethostbyname() for error checking (Bug #3100).
       </notes>
     </release>
   </changelog>
