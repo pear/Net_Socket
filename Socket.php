@@ -82,12 +82,13 @@ class Net_Socket extends PEAR {
      * Connect to the specified port. If called when the socket is
      * already connected, it disconnects and connects again.
      *
-     * @param $addr string IP address or host name
-     * @param $port int TCP port number
-     * @param $persistent bool (optional) whether the connection is
-     *        persistent (kept open between requests by the web server)
-     * @param $timeout int (optional) how long to wait for data
-     * @param $options array see options for stream_context_create
+     * @param string  $addr  IP address or host name.
+     * @param integer $port  TCP port number.
+     * @param boolean $persistent  (optional) Whether the connection is
+     *                             persistent (kept open between requests
+     *                             by the web server).
+     * @param integer $timeout  (optional) How long to wait for data.
+     * @param array $options  See options for stream_context_create.
      * @access public
      * @return mixed true on success or error object
      */
@@ -161,7 +162,7 @@ class Net_Socket extends PEAR {
      * Find out if the socket is in blocking mode.
      *
      * @access public
-     * @return bool the current blocking mode.
+     * @return boolean  The current blocking mode.
      */
     function isBlocking()
     {
@@ -174,7 +175,7 @@ class Net_Socket extends PEAR {
      * if there is no data available, whereas it will block until there
      * is data for blocking sockets.
      *
-     * @param $mode bool true for blocking sockets, false for nonblocking
+     * @param boolean $mode  True for blocking sockets, false for nonblocking.
      * @access public
      * @return mixed true on success or an error object otherwise
      */
@@ -192,8 +193,8 @@ class Net_Socket extends PEAR {
      * Sets the timeout value on socket descriptor,
      * expressed in the sum of seconds and microseconds
      *
-     * @param $seconds int seconds
-     * @param $microseconds int microseconds
+     * @param integer $seconds  Seconds.
+     * @param integer $microseconds  Microseconds.
      * @access public
      * @return mixed true on success or an error object otherwise
      */
@@ -249,7 +250,7 @@ class Net_Socket extends PEAR {
      * chunk; if you know the size of the data you're getting
      * beforehand, this is definitely the way to go.
      *
-     * @param $size The number of bytes to read from the socket.
+     * @param integer $size  The number of bytes to read from the socket.
      * @access public
      * @return $size bytes of data from the socket, or a PEAR_Error if
      *         not connected.
@@ -336,8 +337,8 @@ class Net_Socket extends PEAR {
      * Reads an int of data
      *
      * @access public
-     * @return 1 int of data from the socket, or a PEAR_Error if
-     *         not connected.
+     * @return integer  1 int of data from the socket, or a PEAR_Error if
+     *                  not connected.
      */
     function readInt()
     {
