@@ -18,45 +18,60 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
-
-require_once 'PEAR.php';
 
 /**
- * Generalized Socket class. More docs to be written.
+ * Generalized Socket class.
  *
- * @version 1.0
+ * @version 1.1
  * @author Stig Bakken <ssb@php.net>
  * @author Chuck Hagenbuch <chuck@horde.org>
  */
-class Net_Socket extends PEAR {
-    // {{{ properties
+class Net_Socket {
 
-    /** Socket file pointer. */
+    /**
+     * Socket file pointer.
+     * @var resource $fp
+     */
     var $fp = null;
 
-    /** Whether the socket is blocking. */
+    /**
+     * Whether the socket is blocking. Defaults to true.
+     * @var boolean $blocking
+     */
     var $blocking = true;
 
-    /** Whether the socket is persistent. */
+    /**
+     * Whether the socket is persistent. Defaults to false.
+     * @var boolean $persistent
+     */
     var $persistent = false;
 
-    /** The IP address to connect to. */
+    /**
+     * The IP address to connect to.
+     * @var string $addr
+     */
     var $addr = '';
 
-    /** The port number to connect to. */
+    /**
+     * The port number to connect to.
+     * @var integer $port
+     */
     var $port = 0;
 
-    /** Number of seconds to wait on socket connections before
-        assuming there's no more data. */
+    /**
+     * Number of seconds to wait on socket connections before assuming
+     * there's no more data. Defaults to no timeout.
+     * @var integer $timeout
+     */
     var $timeout = false;
 
-    /** Number of bytes to read at a time in readLine() and
-        readAll(). */
+    /**
+     * Number of bytes to read at a time in readLine() and
+     * readAll(). Defaults to 2048.
+     * @var integer $lineLength
+     */
     var $lineLength = 2048;
-    // }}}
 
-    // {{{ constructor
     /**
      * Constructs a new Net_Socket object.
      *
@@ -64,11 +79,8 @@ class Net_Socket extends PEAR {
      */
     function Net_Socket()
     {
-        $this->PEAR();
     }
-    // }}}
 
-    // {{{ connect()
     /**
      * Connect to the specified port. If called when the socket is
      * already connected, it disconnects and connects again.
@@ -128,9 +140,7 @@ class Net_Socket extends PEAR {
 
         return $this->setBlocking($this->blocking);
     }
-    // }}}
 
-    // {{{ disconnect()
     /**
      * Disconnects from the peer, closes the socket.
      *
@@ -146,9 +156,7 @@ class Net_Socket extends PEAR {
         }
         return $this->raiseError("not connected");
     }
-    // }}}
 
-    // {{{ isBlocking()
     /**
      * Find out if the socket is in blocking mode.
      *
@@ -159,9 +167,7 @@ class Net_Socket extends PEAR {
     {
         return $this->blocking;
     }
-    // }}}
 
-    // {{{ setBlocking()
     /**
      * Sets whether the socket connection should be blocking or
      * not. A read call to a non-blocking socket will return immediately
@@ -181,9 +187,7 @@ class Net_Socket extends PEAR {
         }
         return $this->raiseError("not connected");
     }
-    // }}}
 
-    // {{{ setTimeout()
     /**
      * Sets the timeout value on socket descriptor,
      * expressed in the sum of seconds and microseconds
@@ -201,9 +205,7 @@ class Net_Socket extends PEAR {
         }
         return $this->raiseError("not connected");
     }
-    // }}}
 
-    // {{{ getStatus()
     /**
      * Returns information about an existing socket resource.
      * Currently returns four entries in the result array:
@@ -225,9 +227,7 @@ class Net_Socket extends PEAR {
         }
         return $this->raiseError("not connected");
     }
-    // }}}
 
-    // {{{ gets()
     /**
      * Get a specified line of data
      *
@@ -242,9 +242,7 @@ class Net_Socket extends PEAR {
         }
         return $this->raiseError("not connected");
     }
-    // }}}
 
-    // {{{ read()
     /**
      * Read a specified amount of data. This is guaranteed to return,
      * and has the added benefit of getting everything in one fread()
@@ -263,9 +261,7 @@ class Net_Socket extends PEAR {
         }
         return $this->raiseError("not connected");
     }
-    // }}}
 
-    // {{{ write()
     /**
      * Write a specified amount of data.
      *
@@ -279,9 +275,7 @@ class Net_Socket extends PEAR {
         }
         return $this->raiseError("not connected");
     }
-    // }}}
 
-    // {{{ writeLine()
     /**
      * Write a line of data to the socket, followed by a trailing "\r\n".
      *
@@ -295,9 +289,7 @@ class Net_Socket extends PEAR {
         }
         return $this->raiseError("not connected");
     }
-    // }}}
 
-    // {{{ eof()
     /**
      * Tests for end-of-file on a socket descriptor
      *
@@ -308,9 +300,7 @@ class Net_Socket extends PEAR {
     {
         return (is_resource($this->fp) && feof($this->fp));
     }
-    // }}}
 
-    // {{{ readByte()
     /**
      * Reads a byte of data
      *
@@ -325,9 +315,7 @@ class Net_Socket extends PEAR {
         }
         return $this->raiseError("not connected");
     }
-    // }}}
 
-    // {{{ readWord()
     /**
      * Reads a word of data
      *
@@ -343,9 +331,7 @@ class Net_Socket extends PEAR {
         }
         return $this->raiseError("not connected");
     }
-    // }}}
 
-    // {{{ readInt()
     /**
      * Reads an int of data
      *
@@ -362,9 +348,7 @@ class Net_Socket extends PEAR {
         }
         return $this->raiseError("not connected");
     }
-    // }}}
 
-    // {{{ readString()
     /**
      * Reads a zeroterminated string of data
      *
@@ -383,9 +367,7 @@ class Net_Socket extends PEAR {
         }
         return $this->raiseError("not connected");
     }
-    // }}}
 
-    // {{{ readIPAddress()
     /**
      * Reads an IP Address and returns it in a dot formated string
      *
@@ -402,9 +384,7 @@ class Net_Socket extends PEAR {
         }
         return $this->raiseError("not connected");
     }
-    // }}}
 
-    // {{{ readLine()
     /**
      * Read until either the end of the socket or a newline, whichever
      * comes first. Strips the trailing newline from the returned data.
@@ -430,9 +410,7 @@ class Net_Socket extends PEAR {
         }
         return $this->raiseError("not connected");
     }
-    // }}}
 
-    // {{{ readAll()
     /**
      * Read until the socket closes. THIS FUNCTION WILL NOT EXIT if the
      * socket is in blocking mode until the socket closes.
@@ -451,6 +429,19 @@ class Net_Socket extends PEAR {
         }
         return $this->raiseError("not connected");
     }
-    // }}}
+
+    /**
+     * Raise an error message by including PEAR.php and calling
+     * PEAR::raiseError(). Means we don't have to extend the PEAR
+     * class for non-error operation.
+     *
+     * @param string  $errstr  The error description.
+     * @param integer $errno   (optional) The error code, if any.
+     */
+    function raiseError($errstr, $errno = null)
+    {
+        require_once 'PEAR.php';
+        return PEAR::raiseError($errstr, $errno);
+    }
 
 }
