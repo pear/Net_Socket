@@ -82,15 +82,17 @@ class Net_Socket extends PEAR {
      * Connect to the specified port. If called when the socket is
      * already connected, it disconnects and connects again.
      *
-     * @param string  $addr  IP address or host name.
-     * @param integer $port  TCP port number.
+     * @param string  $addr        IP address or host name.
+     * @param integer $port        TCP port number.
      * @param boolean $persistent  (optional) Whether the connection is
      *                             persistent (kept open between requests
      *                             by the web server).
-     * @param integer $timeout  (optional) How long to wait for data.
-     * @param array $options  See options for stream_context_create.
+     * @param integer $timeout     (optional) How long to wait for data.
+     * @param array   $options     See options for stream_context_create.
+     *
      * @access public
-     * @return mixed true on success or error object
+     *
+     * @return boolean | PEAR_Error  True on success or a PEAR_Error on failure.
      */
     function connect($addr, $port = 0, $persistent = null, $timeout = null, $options = null)
     {
@@ -101,7 +103,8 @@ class Net_Socket extends PEAR {
 
         if (!$addr) {
             return $this->raiseError('$addr cannot be empty');
-        } elseif (strspn($addr, '.0123456789') == strlen($addr)) {
+        } elseif (strspn($addr, '.0123456789') == strlen($addr) ||
+                  strstr($addr, '/') !== false) {
             $this->addr = $addr;
         } else {
             $this->addr = @gethostbyname($addr);

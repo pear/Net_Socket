@@ -31,6 +31,7 @@ byte-order ip addresses).
     <date>xxxx-xx-xx</date>
     <notes>
       - Chunk socket writes on Windows by default, or if explicitly specified (Bug #980)
+      - Don't run any $addr with a '/' in it through gethostbyname() (Bug #3372)
     </notes>
 
     <filelist>
