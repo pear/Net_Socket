@@ -32,7 +32,9 @@ byte-order ip addresses).
     <notes>
       No longer extends PEAR
       No longer includes PEAR.php except to actually trigger errors.
+      Optimize away some duplicate is_resource() calls.
       Better solution for eof() on blocking sockets [#1427].
+      Add select() implementation [#1428].
     </notes>
 
     <filelist>

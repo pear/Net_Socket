@@ -19,6 +19,10 @@
 //
 // $Id$
 
+define('NET_SOCKET_READ',  1);
+define('NET_SOCKET_WRITE', 2);
+define('NET_SOCKET_ERROR', 3);
+
 /**
  * Generalized Socket class.
  *
@@ -436,9 +440,56 @@ class Net_Socket {
     }
 
     /**
+     * Runs the equivalent of the select() system call on the socket
+     * with a timeout specified by tv_sec and tv_usec.
+     *
+     * @param integer $state    Which of read/write/error to check for.
+     * @param integer $tv_sec   Number of seconds for timeout.
+     * @param integer $tv_usec  Number of microseconds for timeout.
+     *
+     * @access public
+     * @return False if select fails, integer describing which of read/write/error
+     *         are ready, or PEAR_Error if not connected.
+     */
+    function select($state, $tv_sec, $tv_usec = 0)
+    {
+        if (is_resource($this->fp)) {
+            $read   = null;
+            $write  = null;
+            $except = null;
+            if ($state & NET_SOCKET_READ) {
+                $read[] = $this->fp;
+            }
+            if ($state & NET_SOCKET_WRITE) {
+                $write[] = $this->fp;
+            }
+            if ($state & NET_SOCKET_ERROR) {
+                $except[] = $this->fp;
+            }
+            if (false === ($sr = stream_select($read, $write, $except, $tv_sec, $tv_usec))) {
+                return false;
+            }
+
+            $result = 0;
+            if (count($read)) {
+                $result |= NET_SOCKET_READ;
+            }
+            if (count($write)) {
+                $result |= NET_SOCKET_WRITE;
+            }
+            if (count($except)) {
+                $result |= NET_SOCKET_ERROR;
+            }
+            return $result;
+        }
+
+        return $this->raiseError('Not connected');
+    }
+
+    /**
      * Raise an error message by including PEAR.php and calling
-     * PEAR::raiseError(). Means we don't have to extend the PEAR
-     * class for non-error operation.
+     * PEAR::raiseError(). Means we don't have to extend or include
+     * the PEAR base class for non-error operation.
      *
      * @param string  $errstr  The error description.
      * @param integer $errno   (optional) The error code, if any.
