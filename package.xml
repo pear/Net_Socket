@@ -28,10 +28,8 @@ byte-order ip addresses).
   <release>
     <version>1.0.3</version>
     <state>stable</state>
-    <date>2004-??-??</date>
+    <date>2004-12-08</date>
     <notes>
-      No longer extends PEAR
-      No longer includes PEAR.php except to actually trigger errors.
       Optimize away some duplicate is_resource() calls.
       Better solution for eof() on blocking sockets [#1427].
       Add select() implementation [#1428].
@@ -44,17 +42,16 @@ byte-order ip addresses).
 
   <changelog>
     <release>
-      <version>1.0</version>
+      <version>1.0.3</version>
       <state>stable</state>
-      <date>2002-04-01</date>
-      <notes>First independent release of Net_Socket.</notes>
+      <date>2004-12-08</date>
+      <notes>
+        Optimize away some duplicate is_resource() calls.
+        Better solution for eof() on blocking sockets [#1427].
+        Add select() implementation [#1428].
+      </notes>
     </release>
-    <release>
-      <version>1.0.1</version>
-      <state>stable</state>
-      <date>2002-04-04</date>
-      <notes>Touch up error handling.</notes>
-    </release>
+
     <release>
       <version>1.0.2</version>
       <state>stable</state>
@@ -64,6 +61,20 @@ byte-order ip addresses).
         context. Correctly read lines that only end in \n. Suppress
         PHP warnings.
       </notes>
+    </release>
+
+    <release>
+      <version>1.0.1</version>
+      <state>stable</state>
+      <date>2002-04-04</date>
+      <notes>Touch up error handling.</notes>
+    </release>
+
+    <release>
+      <version>1.0</version>
+      <state>stable</state>
+      <date>2002-04-01</date>
+      <notes>First independent release of Net_Socket.</notes>
     </release>
   </changelog>
 
