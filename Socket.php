@@ -109,6 +109,9 @@ class Net_Socket {
             $this->addr = $addr;
         } else {
             $this->addr = gethostbyname($addr);
+            if (strcmp($this->addr, $addr) == 0) {
+                return $this->raiseError("unable to lookup hostname '$addr'");
+            }
         }
         $this->port = $port % 65536;
         if ($persistent !== null) {
@@ -158,7 +161,7 @@ class Net_Socket {
             $this->fp = null;
             return true;
         }
-        return $this->raiseError("not connected");
+        return $this->raiseError('not connected');
     }
 
     /**
@@ -189,7 +192,7 @@ class Net_Socket {
             socket_set_blocking($this->fp, $this->blocking);
             return true;
         }
-        return $this->raiseError("not connected");
+        return $this->raiseError('not connected');
     }
 
     /**
@@ -207,7 +210,7 @@ class Net_Socket {
             socket_set_timeout($this->fp, $seconds, $microseconds);
             return true;
         }
-        return $this->raiseError("not connected");
+        return $this->raiseError('not connected');
     }
 
     /**
@@ -229,7 +232,7 @@ class Net_Socket {
         if (is_resource($this->fp)) {
             return socket_get_status($this->fp);
         }
-        return $this->raiseError("not connected");
+        return $this->raiseError('not connected');
     }
 
     /**
@@ -244,7 +247,7 @@ class Net_Socket {
         if (is_resource($this->fp)) {
             return @fgets($this->fp, $size);
         }
-        return $this->raiseError("not connected");
+        return $this->raiseError('not connected');
     }
 
     /**
@@ -263,7 +266,7 @@ class Net_Socket {
         if (is_resource($this->fp)) {
             return @fread($this->fp, $size);
         }
-        return $this->raiseError("not connected");
+        return $this->raiseError('not connected');
     }
 
     /**
@@ -277,7 +280,7 @@ class Net_Socket {
         if (is_resource($this->fp)) {
             return fwrite($this->fp, $data);
         }
-        return $this->raiseError("not connected");
+        return $this->raiseError('not connected');
     }
 
     /**
@@ -291,7 +294,7 @@ class Net_Socket {
         if (is_resource($this->fp)) {
             return fwrite($this->fp, $data . "\r\n");
         }
-        return $this->raiseError("not connected");
+        return $this->raiseError('not connected');
     }
 
     /**
@@ -317,7 +320,7 @@ class Net_Socket {
         if (is_resource($this->fp)) {
             return ord(@fread($this->fp, 1));
         }
-        return $this->raiseError("not connected");
+        return $this->raiseError('not connected');
     }
 
     /**
@@ -333,7 +336,7 @@ class Net_Socket {
             $buf = @fread($this->fp, 2);
             return (ord($buf[0]) + (ord($buf[1]) << 8));
         }
-        return $this->raiseError("not connected");
+        return $this->raiseError('not connected');
     }
 
     /**
@@ -350,7 +353,7 @@ class Net_Socket {
             return (ord($buf[0]) + (ord($buf[1]) << 8) +
                     (ord($buf[2]) << 16) + (ord($buf[3]) << 24));
         }
-        return $this->raiseError("not connected");
+        return $this->raiseError('not connected');
     }
 
     /**
@@ -369,7 +372,7 @@ class Net_Socket {
             }
             return $string;
         }
-        return $this->raiseError("not connected");
+        return $this->raiseError('not connected');
     }
 
     /**
@@ -386,7 +389,7 @@ class Net_Socket {
             return sprintf("%s.%s.%s.%s", ord($buf[0]), ord($buf[1]),
                            ord($buf[2]), ord($buf[3]));
         }
-        return $this->raiseError("not connected");
+        return $this->raiseError('not connected');
     }
 
     /**
@@ -412,7 +415,7 @@ class Net_Socket {
             }
             return $line;
         }
-        return $this->raiseError("not connected");
+        return $this->raiseError('not connected');
     }
 
     /**
@@ -432,7 +435,7 @@ class Net_Socket {
             }
             return $data;
         }
-        return $this->raiseError("not connected");
+        return $this->raiseError('not connected');
     }
 
     /**
@@ -479,7 +482,7 @@ class Net_Socket {
             return $result;
         }
 
-        return $this->raiseError('Not connected');
+        return $this->raiseError('not connected');
     }
 
     /**
