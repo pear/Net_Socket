@@ -79,10 +79,11 @@ class Net_Socket extends PEAR
      * @param $persistent bool (optional) whether the connection is
      *        persistent (kept open between requests by the web server)
      * @param $timeout int (optional) how long to wait for data
+     * @param $options array see options for stream_context_create
      * @access public
      * @return mixed true on success or error object
      */
-    function connect($addr, $port, $persistent = null, $timeout = null)
+    function connect($addr, $port, $persistent = null, $timeout = null, $options = null)
     {
         if (is_resource($this->fp)) {
             @fclose($this->fp);
@@ -104,10 +105,20 @@ class Net_Socket extends PEAR
         $openfunc = $this->persistent ? 'pfsockopen' : 'fsockopen';
         $errno = 0;
         $errstr = '';
-        if ($this->timeout) {
-            $fp = @$openfunc($this->addr, $this->port, $errno, $errstr, $this->timeout);
+        if ($options && function_exists('stream_context_create')) {
+            if ($this->timeout) {
+                $timeout = $this->timeout;
+            } else {
+                $timeout = 0;
+            }
+            $context = stream_context_create($options);
+            $fp = $openfunc($this->addr, $this->port, $errno, $errstr, $timeout, $context);
         } else {
-            $fp = @$openfunc($this->addr, $this->port, $errno, $errstr);
+            if ($this->timeout) {
+                $fp = $openfunc($this->addr, $this->port, $errno, $errstr, $this->timeout);
+            } else {
+                $fp = $openfunc($this->addr, $this->port, $errno, $errstr);
+            }
         }
 
         if (!$fp) {
@@ -262,7 +273,7 @@ class Net_Socket extends PEAR
      * @access public
      * @return mixed true on success or an error object otherwise
      */
-    function write($data) 
+    function write($data)
     {
         if (is_resource($this->fp)) {
             return fwrite($this->fp, $data);
