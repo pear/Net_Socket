@@ -295,17 +295,13 @@ class Net_Socket {
     }
 
     /**
-     * Tests for end-of-file on a socket descriptor
+     * Tests for end-of-file on a socket descriptor.
      *
      * @access public
      * @return bool
      */
     function eof()
     {
-        if ($this->isBlocking()) {
-            $status = $this->getStatus();
-            return $status['eof'];
-        }
         return (is_resource($this->fp) && feof($this->fp));
     }
 
