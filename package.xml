@@ -26,13 +26,13 @@ byte-order ip addresses).
   </maintainers>
 
   <release>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <state>stable</state>
-    <date>2004-04-26</date>
+    <date>2004-??-??</date>
     <notes>
-    Fixes for several longstanding bugs. Allow setting of stream
-    context. Correctly read lines that only end in \n. Suppress PHP
-    warnings.
+      No longer extends PEAR
+      No longer includes PEAR.php except to actually trigger errors.
+      Better solution for eof() on blocking sockets [#1427].
     </notes>
 
     <filelist>
@@ -52,6 +52,16 @@ byte-order ip addresses).
       <state>stable</state>
       <date>2002-04-04</date>
       <notes>Touch up error handling.</notes>
+    </release>
+    <release>
+      <version>1.0.2</version>
+      <state>stable</state>
+      <date>2004-04-26</date>
+      <notes>
+        Fixes for several longstanding bugs. Allow setting of stream
+        context. Correctly read lines that only end in \n. Suppress
+        PHP warnings.
+      </notes>
     </release>
   </changelog>
 
