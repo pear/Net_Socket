@@ -123,7 +123,7 @@ class Net_Socket {
                 $timeout = 0;
             }
             $context = stream_context_create($options);
-            $fp = $openfunc($this->addr, $this->port, $errno, $errstr, $timeout, $context);
+            $fp = @$openfunc($this->addr, $this->port, $errno, $errstr, $timeout, $context);
         } else {
             if ($this->timeout) {
                 $fp = @$openfunc($this->addr, $this->port, $errno, $errstr, $this->timeout);
