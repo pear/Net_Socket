@@ -14,7 +14,7 @@ byte-order ip addresses).
     <maintainer>
       <user>ssb</user>
       <role>lead</role>
-      <name>Stig Sæther Bakken</name>
+      <name>Stig Bakken</name>
       <email>stig@php.net</email>
     </maintainer>
     <maintainer>
@@ -28,8 +28,9 @@ byte-order ip addresses).
   <release>
     <version>1.0.6</version>
     <state>stable</state>
-    <date>xxxx-xx-xx</date>
+    <date>2005-02-26</date>
     <notes>
+      - Make package.xml safe for PEAR 1.4.0.
       - Chunk socket writes on Windows by default, or if explicitly specified (Bug #980)
       - Don't run any $addr with a '/' in it through gethostbyname() (Bug #3372)
     </notes>
