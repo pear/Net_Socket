@@ -26,11 +26,11 @@ byte-order ip addresses).
   </maintainers>
 
   <release>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <state>stable</state>
-    <date>2005-01-11</date>
+    <date>xxxx-xx-xx</date>
     <notes>
-      Don't rely on gethostbyname() for error checking (Bug #3100).
+      - Chunk socket writes on Windows by default, or if explicitly specified (Bug #980)
     </notes>
 
     <filelist>
@@ -80,7 +80,7 @@ byte-order ip addresses).
       </notes>
     </release>
     <release>
-      <version>1.0.4</version>
+      <version>1.0.5</version>
       <state>stable</state>
       <date>2005-01-11</date>
       <notes>
