@@ -28,6 +28,7 @@ byte-order ip addresses).
     <state>stable</state>
     <date>2002-04-04</date>
     <notes>Touch up error handling.</notes>
+    <license>PHP 2.02</license>
     <filelist>
       <file role="php" baseinstalldir="Net">Socket.php</file>
     </filelist>
