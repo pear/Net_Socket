@@ -154,7 +154,7 @@ class Net_Socket {
     function disconnect()
     {
         if (is_resource($this->fp)) {
-            fclose($this->fp);
+            @fclose($this->fp);
             $this->fp = null;
             return true;
         }
@@ -242,7 +242,7 @@ class Net_Socket {
     function gets($size)
     {
         if (is_resource($this->fp)) {
-            return fgets($this->fp, $size);
+            return @fgets($this->fp, $size);
         }
         return $this->raiseError("not connected");
     }
@@ -261,7 +261,7 @@ class Net_Socket {
     function read($size)
     {
         if (is_resource($this->fp)) {
-            return fread($this->fp, $size);
+            return @fread($this->fp, $size);
         }
         return $this->raiseError("not connected");
     }
@@ -315,7 +315,7 @@ class Net_Socket {
     function readByte()
     {
         if (is_resource($this->fp)) {
-            return ord(fread($this->fp, 1));
+            return ord(@fread($this->fp, 1));
         }
         return $this->raiseError("not connected");
     }
@@ -330,7 +330,7 @@ class Net_Socket {
     function readWord()
     {
         if (is_resource($this->fp)) {
-            $buf = fread($this->fp, 2);
+            $buf = @fread($this->fp, 2);
             return (ord($buf[0]) + (ord($buf[1]) << 8));
         }
         return $this->raiseError("not connected");
@@ -346,7 +346,7 @@ class Net_Socket {
     function readInt()
     {
         if (is_resource($this->fp)) {
-            $buf = fread($this->fp, 4);
+            $buf = @fread($this->fp, 4);
             return (ord($buf[0]) + (ord($buf[1]) << 8) +
                     (ord($buf[2]) << 16) + (ord($buf[3]) << 24));
         }
@@ -364,7 +364,7 @@ class Net_Socket {
     {
         if (is_resource($this->fp)) {
             $string = '';
-            while (($char = fread($this->fp, 1)) != "\x00")  {
+            while (($char = @fread($this->fp, 1)) != "\x00")  {
                 $string .= $char;
             }
             return $string;
@@ -382,7 +382,7 @@ class Net_Socket {
     function readIPAddress()
     {
         if (is_resource($this->fp)) {
-            $buf = fread($this->fp, 4);
+            $buf = @fread($this->fp, 4);
             return sprintf("%s.%s.%s.%s", ord($buf[0]), ord($buf[1]),
                            ord($buf[2]), ord($buf[3]));
         }
@@ -404,7 +404,7 @@ class Net_Socket {
             $line = '';
             $timeout = time() + $this->timeout;
             while (!feof($this->fp) && (!$this->timeout || time() < $timeout)) {
-                $line .= fgets($this->fp, $this->lineLength);
+                $line .= @fgets($this->fp, $this->lineLength);
                 if (substr($line, -2) == "\r\n" ||
                     substr($line, -1) == "\n") {
                     return rtrim($line, "\r\n");
@@ -428,7 +428,7 @@ class Net_Socket {
         if (is_resource($this->fp)) {
             $data = '';
             while (!feof($this->fp)) {
-                $data .= fread($this->fp, $this->lineLength);
+                $data .= @fread($this->fp, $this->lineLength);
             }
             return $data;
         }
