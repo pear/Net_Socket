@@ -23,7 +23,7 @@ require_once 'PEAR.php';
 
 define('NET_SOCKET_READ',  1);
 define('NET_SOCKET_WRITE', 2);
-define('NET_SOCKET_ERROR', 3);
+define('NET_SOCKET_ERROR', 4);
 
 /**
  * Generalized Socket class.
