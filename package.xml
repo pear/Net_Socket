@@ -41,6 +41,7 @@ http://pear.php.net/dtd/package-2.0.xsd">
  <notes><!-- current development changes -->
  - Fixing bug #6789: Net_Sock::eof() returns false when socket is already disconnected
  - Using package.xml v2.0
+ - Fixing request #3327: Method for setting Socket's write buffer size
  </notes>
  <contents>
   <dir name="/">
