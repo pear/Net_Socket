@@ -329,12 +329,14 @@ class Net_Socket extends PEAR {
     /**
      * Tests for end-of-file on a socket descriptor.
      *
+     * Also returns true if the socket is disconnected.
+     *
      * @access public
      * @return bool
      */
     function eof()
     {
-        return (is_resource($this->fp) && feof($this->fp));
+        return (!is_resource($this->fp) || feof($this->fp));
     }
 
     /**
