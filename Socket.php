@@ -216,6 +216,27 @@ class Net_Socket extends PEAR {
     }
 
     /**
+     * Sets the file buffering size on the stream.
+     * See php's stream_set_write_buffer for more information.
+     *
+     * @param integer $size     Write buffer size.
+     * @access public
+     * @return mixed on success or an PEAR_Error object otherwise
+     */
+    function setWriteBuffer($size)
+    {
+        if (!is_resource($this->fp)) {
+            return $this->raiseError('not connected');
+        }
+
+        $returned = stream_set_write_buffer($this->fp, $code);
+        if ($returned == 0) {
+            return true;
+        }
+        return $this->raiseError('Cannot set write buffer.');
+    }
+
+    /**
      * Returns information about an existing socket resource.
      * Currently returns four entries in the result array:
      *
