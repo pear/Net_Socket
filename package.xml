@@ -26,22 +26,23 @@ http://pear.php.net/dtd/package-2.0.xsd">
   <active>yes</active>
  </lead>
 
- <date>2005-02-26</date>
- <time>22:10:32</time>
+ <date>2007-03-30</date>
+ <time>16:10:32</time>
 
  <version>
-  <release>1.0.6</release>
-  <api>1.0.6</api>
+  <release>1.0.7</release>
+  <api>1.0.7</api>
  </version>
  <stability>
   <release>stable</release>
   <api>stable</api>
  </stability>
  <license uri="http://www.php.net/license">PHP License</license>
- <notes><!-- current development changes -->
- - Fixing bug #6789: Net_Sock::eof() returns false when socket is already disconnected
- - Using package.xml v2.0
- - Fixing request #3327: Method for setting Socket's write buffer size
+ <notes>
+- Fixing bug #6789: Net_Sock::eof() returns false when socket is already disconnected
+- Using package.xml v2.0
+- Fixing request #3327: Method for setting Socket's write buffer size
+- Add enableCrypto() for calling stream_socket_enable_crypto with PHP 5.1.0+
  </notes>
  <contents>
   <dir name="/">
@@ -171,6 +172,25 @@ Add select() implementation [#1428].
 - Make package.xml safe for PEAR 1.4.0.
 - Chunk socket writes on Windows by default, or if explicitly specified (Bug #980)
 - Don&apos;t run any $addr with a &apos;/&apos; in it through gethostbyname() (Bug #3372)
+   </notes>
+  </release>
+
+  <release>
+   <version>
+    <release>1.0.7</release>
+    <api>1.0.7</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2007-03-30</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixing bug #6789: Net_Sock::eof() returns false when socket is already disconnected
+- Using package.xml v2.0
+- Fixing request #3327: Method for setting Socket's write buffer size
+- Add enableCrypto() for calling stream_socket_enable_crypto with PHP 5.1.0+
    </notes>
   </release>
 

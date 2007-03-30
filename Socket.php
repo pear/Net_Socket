@@ -551,7 +551,6 @@ class Net_Socket extends PEAR {
         return $result;
     }
 
-
     /**
      * Turns encryption on/off on a connected socket.
      *
@@ -576,4 +575,5 @@ class Net_Socket extends PEAR {
             return $this->raiseError('Net_Socket::enableCrypto() requires php version >= 5.1.0');
         }
     }
+
 }
