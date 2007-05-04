@@ -464,17 +464,14 @@ class Net_Socket extends PEAR {
             return $this->raiseError('not connected');
         }
 
-        ob_start();
         $line = '';
         $timeout = time() + $this->timeout;
         while (!feof($this->fp) && (!$this->timeout || time() < $timeout)) {
-            $line .= fgets($this->fp, $this->lineLength);
+            $line .= @fgets($this->fp, $this->lineLength);
             if (substr($line, -1) == "\n") {
-                ob_end_clean();
                 return rtrim($line, "\r\n");
             }
         }
-        ob_end_clean();
         return $line;
     }
 
