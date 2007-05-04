@@ -30,8 +30,8 @@ http://pear.php.net/dtd/package-2.0.xsd">
  <time>16:10:32</time>
 
  <version>
-  <release>1.0.7</release>
-  <api>1.0.7</api>
+  <release>1.0.8</release>
+  <api>1.0.8</api>
  </version>
  <stability>
   <release>stable</release>
@@ -39,10 +39,8 @@ http://pear.php.net/dtd/package-2.0.xsd">
  </stability>
  <license uri="http://www.php.net/license">PHP License</license>
  <notes>
-- Fixing bug #6789: Net_Sock::eof() returns false when socket is already disconnected
-- Using package.xml v2.0
-- Fixing request #3327: Method for setting Socket's write buffer size
-- Add enableCrypto() for calling stream_socket_enable_crypto with PHP 5.1.0+
+- Revert change for bug #7692 that caused trouble with code already using
+  output buffering.
  </notes>
  <contents>
   <dir name="/">
