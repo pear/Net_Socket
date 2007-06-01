@@ -432,10 +432,10 @@ class Net_Socket extends PEAR {
     }
 
     /**
-     * Reads an IP Address and returns it in a dot formated string
+     * Reads an IP Address and returns it in a dot formatted string
      *
      * @access public
-     * @return Dot formated string, or a PEAR_Error if
+     * @return Dot formatted string, or a PEAR_Error if
      *         not connected.
      */
     function readIPAddress()
@@ -445,7 +445,7 @@ class Net_Socket extends PEAR {
         }
 
         $buf = @fread($this->fp, 4);
-        return sprintf("%s.%s.%s.%s", ord($buf[0]), ord($buf[1]),
+        return sprintf('%d.%d.%d.%d', ord($buf[0]), ord($buf[1]),
                        ord($buf[2]), ord($buf[3]));
     }
 
