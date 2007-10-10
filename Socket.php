@@ -130,7 +130,15 @@ class Net_Socket extends PEAR {
                 $timeout = 0;
             }
             $context = stream_context_create($options);
-            $fp = @$openfunc($this->addr, $this->port, $errno, $errstr, $timeout, $context);
+
+            // Since PHP 5 fsockopen doesn't allow context specification
+            if (function_exists('stream_socket_client')) {
+                $flags = $this->persistent ? STREAM_CLIENT_PERSISTENT : STREAM_CLIENT_CONNECT;
+                $addr = $this->addr . ':' . $this->port;
+                $fp = stream_socket_client($addr, $errno, $errstr, $timeout, $flags, $context);
+            } else {
+                $fp = @$openfunc($this->addr, $this->port, $errno, $errstr, $timeout, $context);
+            }
         } else {
             if ($this->timeout) {
                 $fp = @$openfunc($this->addr, $this->port, $errno, $errstr, $this->timeout);
