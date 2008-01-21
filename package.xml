@@ -26,12 +26,12 @@ http://pear.php.net/dtd/package-2.0.xsd">
   <active>yes</active>
  </lead>
 
- <date>2007-05-04</date>
+ <date>2008-01-21</date>
  <time>00:33:32</time>
 
  <version>
-  <release>1.0.8</release>
-  <api>1.0.8</api>
+  <release>1.0.9</release>
+  <api>1.0.9</api>
  </version>
  <stability>
   <release>stable</release>
@@ -39,9 +39,10 @@ http://pear.php.net/dtd/package-2.0.xsd">
  </stability>
  <license uri="http://www.php.net/license">PHP License</license>
  <notes>
-- Revert change for bug #7692 that caused trouble with code already using
-  output buffering.
+- Catch errors from fsockopen() that happen before the socket is actually opened
+  (Jan Scheider, jan@horde.org).
  </notes>
+
  <contents>
   <dir name="/">
    <file baseinstalldir="Net" name="Socket.php" role="php" />
@@ -189,6 +190,23 @@ Add select() implementation [#1428].
 - Using package.xml v2.0
 - Fixing request #3327: Method for setting Socket's write buffer size
 - Add enableCrypto() for calling stream_socket_enable_crypto with PHP 5.1.0+
+   </notes>
+  </release>
+
+  <release>
+   <version>
+    <release>1.0.8</release>
+    <api>1.0.8</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2007-05-04</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Revert change for bug #7692 that caused trouble with code already using
+  output buffering.
    </notes>
   </release>
 
