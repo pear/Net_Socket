@@ -317,7 +317,9 @@ class Net_Socket extends PEAR {
      *                            NULL means all at once.
      *
      * @access public
-     * @return mixed true on success or a PEAR_Error instance otherwise
+     * @return mixed If the socket is not connected, returns an instance of PEAR_Error
+     *               If the write succeeds, returns the number of bytes written
+     *               If the write fails, returns false.
      */
     function write($data, $blocksize = null)
     {
