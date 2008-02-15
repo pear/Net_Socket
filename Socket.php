@@ -166,7 +166,7 @@ class Net_Socket extends PEAR {
      * Disconnects from the peer, closes the socket.
      *
      * @access public
-     * @return mixed true on success or an error object otherwise
+     * @return mixed true on success or a PEAR_Error instance otherwise
      */
     function disconnect()
     {
@@ -198,7 +198,7 @@ class Net_Socket extends PEAR {
      *
      * @param boolean $mode  True for blocking sockets, false for nonblocking.
      * @access public
-     * @return mixed true on success or an error object otherwise
+     * @return mixed true on success or a PEAR_Error instance otherwise
      */
     function setBlocking($mode)
     {
@@ -218,7 +218,7 @@ class Net_Socket extends PEAR {
      * @param integer $seconds  Seconds.
      * @param integer $microseconds  Microseconds.
      * @access public
-     * @return mixed true on success or an error object otherwise
+     * @return mixed true on success or a PEAR_Error instance otherwise
      */
     function setTimeout($seconds, $microseconds)
     {
@@ -262,7 +262,7 @@ class Net_Socket extends PEAR {
      * </p>
      *
      * @access public
-     * @return mixed Array containing information about existing socket resource or an error object otherwise
+     * @return mixed Array containing information about existing socket resource or a PEAR_Error instance otherwise
      */
     function getStatus()
     {
@@ -317,7 +317,7 @@ class Net_Socket extends PEAR {
      *                            NULL means all at once.
      *
      * @access public
-     * @return mixed true on success or an error object otherwise
+     * @return mixed true on success or a PEAR_Error instance otherwise
      */
     function write($data, $blocksize = null)
     {
@@ -326,7 +326,7 @@ class Net_Socket extends PEAR {
         }
 
         if (is_null($blocksize) && !OS_WINDOWS) {
-            return fwrite($this->fp, $data);
+            return @fwrite($this->fp, $data);
         } else {
             if (is_null($blocksize)) {
                 $blocksize = 1024;
