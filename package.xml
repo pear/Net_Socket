@@ -37,7 +37,7 @@ http://pear.php.net/dtd/package-2.0.xsd">
   <release>stable</release>
   <api>stable</api>
  </stability>
- <license uri="http://www.php.net/license">PHP License</license>
+ <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
  <notes>
 - Catch errors from fsockopen() that happen before the socket is actually opened
   (Jan Scheider, jan@horde.org).
@@ -72,7 +72,7 @@ http://pear.php.net/dtd/package-2.0.xsd">
     <api>stable</api>
    </stability>
    <date>2002-04-01</date>
-   <license uri="http://www.php.net/license">PHP License</license>
+   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
    <notes>First independent release of Net_Socket.
    </notes>
   </release>
@@ -87,7 +87,7 @@ http://pear.php.net/dtd/package-2.0.xsd">
     <api>stable</api>
    </stability>
    <date>2002-04-04</date>
-   <license uri="http://www.php.net/license">PHP License</license>
+   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
    <notes>Touch up error handling.
    </notes>
   </release>
@@ -102,7 +102,7 @@ http://pear.php.net/dtd/package-2.0.xsd">
     <api>stable</api>
    </stability>
    <date>2004-04-26</date>
-   <license uri="http://www.php.net/license">PHP License</license>
+   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
    <notes>Fixes for several longstanding bugs. Allow setting of stream
 context. Correctly read lines that only end in \n. Suppress
 PHP warnings.
@@ -119,7 +119,7 @@ PHP warnings.
     <api>stable</api>
    </stability>
    <date>2004-12-08</date>
-   <license uri="http://www.php.net/license">PHP License</license>
+   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
    <notes>Optimize away some duplicate is_resource() calls.
 Better solution for eof() on blocking sockets [#1427].
 Add select() implementation [#1428].
@@ -136,7 +136,7 @@ Add select() implementation [#1428].
     <api>stable</api>
    </stability>
    <date>2004-12-13</date>
-   <license uri="http://www.php.net/license">PHP License</license>
+   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
    <notes>Restore support for unix sockets (Bug #2961).
    </notes>
   </release>
@@ -151,7 +151,7 @@ Add select() implementation [#1428].
     <api>stable</api>
    </stability>
    <date>2005-01-11</date>
-   <license uri="http://www.php.net/license">PHP License</license>
+   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
    <notes>Don&apos;t rely on gethostbyname() for error checking (Bug #3100).
    </notes>
   </release>
@@ -166,7 +166,7 @@ Add select() implementation [#1428].
     <api>stable</api>
    </stability>
    <date>2005-02-26</date>
-   <license uri="http://www.php.net/license">PHP License</license>
+   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
    <notes>
 - Make package.xml safe for PEAR 1.4.0.
 - Chunk socket writes on Windows by default, or if explicitly specified (Bug #980)
@@ -184,7 +184,7 @@ Add select() implementation [#1428].
     <api>stable</api>
    </stability>
    <date>2007-03-30</date>
-   <license uri="http://www.php.net/license">PHP License</license>
+   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
    <notes>
 - Fixing bug #6789: Net_Sock::eof() returns false when socket is already disconnected
 - Using package.xml v2.0
@@ -203,7 +203,7 @@ Add select() implementation [#1428].
     <api>stable</api>
    </stability>
    <date>2007-05-04</date>
-   <license uri="http://www.php.net/license">PHP License</license>
+   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
    <notes>
 - Revert change for bug #7692 that caused trouble with code already using
   output buffering.
