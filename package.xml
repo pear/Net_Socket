@@ -14,19 +14,19 @@ http://pear.php.net/dtd/package-2.0.xsd">
  </description>
 
  <lead>
-  <name>Stig Bakken</name>
-  <user>ssb</user>
-  <email>stig@php.net</email>
-  <active>yes</active>
- </lead>
- <lead>
   <name>Chuck Hagenbuch</name>
   <user>chagenbu</user>
   <email>chuck@horde.org</email>
   <active>yes</active>
  </lead>
+ <lead>
+  <name>Stig Bakken</name>
+  <user>ssb</user>
+  <email>stig@php.net</email>
+  <active>no</active>
+ </lead>
 
- <date>2008-01-21</date>
+ <date>2008-07-11</date>
  <time>00:33:32</time>
 
  <version>
@@ -39,8 +39,14 @@ http://pear.php.net/dtd/package-2.0.xsd">
  </stability>
  <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
  <notes>
+- Fix variable name in setWriteBuffer() (PEAR Bug #11039)
+- Use %d for ints (PEAR Bug #11202)
+- Fix passing context to socket for both PHP 4 and PHP 5
 - Catch errors from fsockopen() that happen before the socket is actually opened
-  (Jan Scheider, jan@horde.org).
+  (Jan Scheider, jan@horde.org)
+- Restore the original track_errors setting
+- Silence unsilenced fwrite call
+- Update PHPDoc
  </notes>
 
  <contents>
@@ -59,156 +65,5 @@ http://pear.php.net/dtd/package-2.0.xsd">
   </required>
  </dependencies>
  <phprelease />
-
- <changelog>
-
-  <release>
-   <version>
-    <release>1.0.0</release>
-    <api>1.0.0</api>
-   </version>
-   <stability>
-    <release>stable</release>
-    <api>stable</api>
-   </stability>
-   <date>2002-04-01</date>
-   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
-   <notes>First independent release of Net_Socket.
-   </notes>
-  </release>
-
-  <release>
-   <version>
-    <release>1.0.1</release>
-    <api>1.0.1</api>
-   </version>
-   <stability>
-    <release>stable</release>
-    <api>stable</api>
-   </stability>
-   <date>2002-04-04</date>
-   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
-   <notes>Touch up error handling.
-   </notes>
-  </release>
-
-  <release>
-   <version>
-    <release>1.0.2</release>
-    <api>1.0.2</api>
-   </version>
-   <stability>
-    <release>stable</release>
-    <api>stable</api>
-   </stability>
-   <date>2004-04-26</date>
-   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
-   <notes>Fixes for several longstanding bugs. Allow setting of stream
-context. Correctly read lines that only end in \n. Suppress
-PHP warnings.
-   </notes>
-  </release>
-
-  <release>
-   <version>
-    <release>1.0.3</release>
-    <api>1.0.3</api>
-   </version>
-   <stability>
-    <release>stable</release>
-    <api>stable</api>
-   </stability>
-   <date>2004-12-08</date>
-   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
-   <notes>Optimize away some duplicate is_resource() calls.
-Better solution for eof() on blocking sockets [#1427].
-Add select() implementation [#1428].
-   </notes>
-  </release>
-
-  <release>
-   <version>
-    <release>1.0.4</release>
-    <api>1.0.4</api>
-   </version>
-   <stability>
-    <release>stable</release>
-    <api>stable</api>
-   </stability>
-   <date>2004-12-13</date>
-   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
-   <notes>Restore support for unix sockets (Bug #2961).
-   </notes>
-  </release>
-
-  <release>
-   <version>
-    <release>1.0.5</release>
-    <api>1.0.5</api>
-   </version>
-   <stability>
-    <release>stable</release>
-    <api>stable</api>
-   </stability>
-   <date>2005-01-11</date>
-   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
-   <notes>Don&apos;t rely on gethostbyname() for error checking (Bug #3100).
-   </notes>
-  </release>
-
-  <release>
-   <version>
-    <release>1.0.6</release>
-    <api>1.0.6</api>
-   </version>
-   <stability>
-    <release>stable</release>
-    <api>stable</api>
-   </stability>
-   <date>2005-02-26</date>
-   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
-   <notes>
-- Make package.xml safe for PEAR 1.4.0.
-- Chunk socket writes on Windows by default, or if explicitly specified (Bug #980)
-- Don&apos;t run any $addr with a &apos;/&apos; in it through gethostbyname() (Bug #3372)
-   </notes>
-  </release>
-
-  <release>
-   <version>
-    <release>1.0.7</release>
-    <api>1.0.7</api>
-   </version>
-   <stability>
-    <release>stable</release>
-    <api>stable</api>
-   </stability>
-   <date>2007-03-30</date>
-   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
-   <notes>
-- Fixing bug #6789: Net_Sock::eof() returns false when socket is already disconnected
-- Using package.xml v2.0
-- Fixing request #3327: Method for setting Socket's write buffer size
-- Add enableCrypto() for calling stream_socket_enable_crypto with PHP 5.1.0+
-   </notes>
-  </release>
-
-  <release>
-   <version>
-    <release>1.0.8</release>
-    <api>1.0.8</api>
-   </version>
-   <stability>
-    <release>stable</release>
-    <api>stable</api>
-   </stability>
-   <date>2007-05-04</date>
-   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
-   <notes>
-- Revert change for bug #7692 that caused trouble with code already using
-  output buffering.
-   </notes>
-  </release>
-
- </changelog>
+ <changelog />
 </package>
