@@ -91,6 +91,12 @@ class Net_Socket extends PEAR
     var $lineLength = 2048;
 
     /**
+     * The string to use as a newline terminator. Usually "\r\n" or "\n".
+     * @var string $newline
+     */
+    var $newline = "\r\n";
+
+    /**
      * Connect to the specified port. If called when the socket is
      * already connected, it disconnects and connects again.
      *
@@ -199,6 +205,18 @@ class Net_Socket extends PEAR
 
         @fclose($this->fp);
         $this->fp = null;
+        return true;
+    }
+
+    /**
+     * Set the newline character/sequence to use.
+     *
+     * @param string $newline  Newline character(s)
+     * @return boolean True
+     */
+    function setNewline($newline)
+    {
+        $this->newline = $newline;
         return true;
     }
 
@@ -384,7 +402,7 @@ class Net_Socket extends PEAR
     }
 
     /**
-     * Write a line of data to the socket, followed by a trailing "\r\n".
+     * Write a line of data to the socket, followed by a trailing newline.
      *
      * @param string $data Data to write
      *
@@ -397,7 +415,7 @@ class Net_Socket extends PEAR
             return $this->raiseError('not connected');
         }
 
-        return fwrite($this->fp, $data . "\r\n");
+        return fwrite($this->fp, $data . $this->newline);
     }
 
     /**
@@ -524,7 +542,7 @@ class Net_Socket extends PEAR
         while (!feof($this->fp) && (!$this->timeout || time() < $timeout)) {
             $line .= @fgets($this->fp, $this->lineLength);
             if (substr($line, -1) == "\n") {
-                return rtrim($line, "\r\n");
+                return rtrim($line, $this->newline);
             }
         }
         return $line;
