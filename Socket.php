@@ -309,13 +309,17 @@ class Net_Socket extends PEAR
      * @return $size bytes of data from the socket, or a PEAR_Error if
      *         not connected.
      */
-    function gets($size)
+    function gets($size = null)
     {
         if (!is_resource($this->fp)) {
             return $this->raiseError('not connected');
         }
 
-        return @fgets($this->fp, $size);
+        if (is_null($size)) {
+            return @fgets($this->fp);
+        } else {
+            return @fgets($this->fp, $size);
+        }
     }
 
     /**
