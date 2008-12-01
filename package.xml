@@ -30,7 +30,7 @@ http://pear.php.net/dtd/package-2.0.xsd">
  <time>00:33:32</time>
 
  <version>
-  <release>1.0.9</release>
+  <release>1.0.10</release>
   <api>1.0.9</api>
  </version>
  <stability>
@@ -39,14 +39,11 @@ http://pear.php.net/dtd/package-2.0.xsd">
  </stability>
  <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
  <notes>
-- Fix variable name in setWriteBuffer() (PEAR Bug #11039)
-- Use %d for ints (PEAR Bug #11202)
-- Fix passing context to socket for both PHP 4 and PHP 5
-- Catch errors from fsockopen() that happen before the socket is actually opened
-  (Jan Scheider, jan@horde.org)
-- Restore the original track_errors setting
-- Silence unsilenced fwrite call
-- Update PHPDoc
+- Configurable newline sequence (PEAR Bug #14181)
+- Make $size parameter to gets() optional (PEAR Bug #14433)
+- Don't overwrite $errstr set by fsockopen (PEAR Bug #14448)
+- Avoid an infinite loop if fwrite() returns 0 (PEAR Bug #14619)
+- CS cleanup (PEAR Bug #14803)
  </notes>
 
  <contents>
