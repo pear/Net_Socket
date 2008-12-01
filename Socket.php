@@ -373,8 +373,8 @@ class Net_Socket extends PEAR
             $size = strlen($data);
             while ($pos < $size) {
                 $written = @fwrite($this->fp, substr($data, $pos, $blocksize));
-                if ($written === false) {
-                    return false;
+                if (!$written) {
+                    return $written;
                 }
                 $pos += $written;
             }
