@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
-http://pear.php.net/dtd/tasks-1.0.xsd
-http://pear.php.net/dtd/package-2.0
-http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
  <name>Net_Socket</name>
  <channel>pear.php.net</channel>
  <summary>Network Socket Interface</summary>
- <description>
-  Net_Socket is a class interface to TCP sockets.  It provides blocking
+ <description>Net_Socket is a class interface to TCP sockets.  It provides blocking
   and non-blocking operation, with different reading and writing modes
   (byte-wise, block-wise, line-wise and special formats like network
-  byte-order ip addresses).
- </description>
-
+  byte-order ip addresses).</description>
  <lead>
   <name>Chuck Hagenbuch</name>
   <user>chagenbu</user>
@@ -25,10 +19,8 @@ http://pear.php.net/dtd/package-2.0.xsd">
   <email>stig@php.net</email>
   <active>no</active>
  </lead>
-
- <date>2008-07-11</date>
- <time>00:33:32</time>
-
+ <date>2010-08-19</date>
+ <time>00:48:25</time>
  <version>
   <release>1.0.10</release>
   <api>1.0.9</api>
@@ -41,15 +33,14 @@ http://pear.php.net/dtd/package-2.0.xsd">
  <notes>
 - Configurable newline sequence (PEAR Bug #14181)
 - Make $size parameter to gets() optional (PEAR Bug #14433)
-- Don't overwrite $errstr set by fsockopen (PEAR Bug #14448)
+- Don&apos;t overwrite $errstr set by fsockopen (PEAR Bug #14448)
 - Avoid an infinite loop if fwrite() returns 0 (PEAR Bug #14619)
 - CS cleanup (PEAR Bug #14803)
  </notes>
-
  <contents>
-  <dir name="/">
-   <file baseinstalldir="Net" name="Socket.php" role="php" />
-  </dir> <!-- / -->
+  <dir baseinstalldir="Net" name="/">
+   <file baseinstalldir="Net" md5sum="d6caf90947b006edc1e7ca266d4ad3ec" name="Socket.php" role="php" />
+  </dir>
  </contents>
  <dependencies>
   <required>
@@ -62,5 +53,25 @@ http://pear.php.net/dtd/package-2.0.xsd">
   </required>
  </dependencies>
  <phprelease />
- <changelog />
+ <changelog>
+  <release>
+   <version>
+    <release>1.0.10</release>
+    <api>1.0.9</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2010-08-19</date>
+   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
+   <notes>
+- Configurable newline sequence (PEAR Bug #14181)
+- Make $size parameter to gets() optional (PEAR Bug #14433)
+- Don&apos;t overwrite $errstr set by fsockopen (PEAR Bug #14448)
+- Avoid an infinite loop if fwrite() returns 0 (PEAR Bug #14619)
+- CS cleanup (PEAR Bug #14803)
+   </notes>
+  </release>
+ </changelog>
 </package>
