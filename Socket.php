@@ -249,7 +249,7 @@ class Net_Socket extends PEAR
         }
 
         $this->blocking = $mode;
-        socket_set_blocking($this->fp, $this->blocking);
+        stream_set_blocking($this->fp, (int)$this->blocking);
         return true;
     }
 
