@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
  <name>Net_Socket</name>
  <channel>pear.php.net</channel>
  <summary>Network Socket Interface</summary>
@@ -19,8 +19,8 @@
   <email>stig@php.net</email>
   <active>no</active>
  </lead>
- <date>2010-08-19</date>
- <time>00:48:25</time>
+ <date>2010-10-16</date>
+ <time>00:21:31</time>
  <version>
   <release>1.0.10</release>
   <api>1.0.9</api>
@@ -31,6 +31,7 @@
  </stability>
  <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
  <notes>
+QA release
 - Configurable newline sequence (PEAR Bug #14181)
 - Make $size parameter to gets() optional (PEAR Bug #14433)
 - Don&apos;t overwrite $errstr set by fsockopen (PEAR Bug #14448)
@@ -38,8 +39,8 @@
 - CS cleanup (PEAR Bug #14803)
  </notes>
  <contents>
-  <dir baseinstalldir="Net" name="/">
-   <file baseinstalldir="Net" md5sum="d6caf90947b006edc1e7ca266d4ad3ec" name="Socket.php" role="php" />
+  <dir baseinstalldir="/" name="/">
+   <file baseinstalldir="/" md5sum="0390eb95555252ac3324e7a76341a4f0" name="Net/Socket.php" role="php" />
   </dir>
  </contents>
  <dependencies>
@@ -63,9 +64,10 @@
     <release>stable</release>
     <api>stable</api>
    </stability>
-   <date>2010-08-19</date>
+   <date>2010-10-16</date>
    <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
    <notes>
+QA release
 - Configurable newline sequence (PEAR Bug #14181)
 - Make $size parameter to gets() optional (PEAR Bug #14433)
 - Don&apos;t overwrite $errstr set by fsockopen (PEAR Bug #14448)
