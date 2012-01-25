@@ -77,11 +77,11 @@ class Net_Socket extends PEAR
     var $port = 0;
 
     /**
-     * Number of seconds to wait on socket connections before assuming
+     * Number of seconds to wait on socket operations before assuming
      * there's no more data. Defaults to no timeout.
      * @var integer $timeout
      */
-    var $timeout = false;
+    var $timeout = null;
 
     /**
      * Number of bytes to read at a time in readLine() and
@@ -105,7 +105,7 @@ class Net_Socket extends PEAR
      * @param boolean $persistent (optional) Whether the connection is
      *                            persistent (kept open between requests
      *                            by the web server).
-     * @param integer $timeout    (optional) How long to wait for data.
+     * @param integer $timeout    (optional) Connection socket timeout.
      * @param array   $options    See options for stream_context_create.
      *
      * @access public
@@ -135,22 +135,17 @@ class Net_Socket extends PEAR
             $this->persistent = $persistent;
         }
 
-        if ($timeout !== null) {
-            $this->timeout = $timeout;
-        }
-
         $openfunc = $this->persistent ? 'pfsockopen' : 'fsockopen';
         $errno    = 0;
         $errstr   = '';
 
         $old_track_errors = @ini_set('track_errors', 1);
 
+        if ($timeout <= 0) {
+            $timeout = @ini_get('default_socket_timeout');
+        }
+
         if ($options && function_exists('stream_context_create')) {
-            if ($this->timeout) {
-                $timeout = $this->timeout;
-            } else {
-                $timeout = 0;
-            }
             $context = stream_context_create($options);
 
             // Since PHP 5 fsockopen doesn't allow context specification
@@ -169,12 +164,7 @@ class Net_Socket extends PEAR
                                  $errstr, $timeout, $context);
             }
         } else {
-            if ($this->timeout) {
-                $fp = @$openfunc($this->addr, $this->port, $errno,
-                                 $errstr, $this->timeout);
-            } else {
-                $fp = @$openfunc($this->addr, $this->port, $errno, $errstr);
-            }
+            $fp = @$openfunc($this->addr, $this->port, $errno, $errstr, $timeout);
         }
 
         if (!$fp) {
