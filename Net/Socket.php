@@ -360,9 +360,10 @@ class Net_Socket extends PEAR
      *
      * @access public
      * @return mixed If the socket is not connected, returns an instance of
-     *               PEAR_Error
-     *               If the write succeeds, returns the number of bytes written
+     *               PEAR_Error.
+     *               If the write succeeds, returns the number of bytes written.
      *               If the write fails, returns false.
+     *               If the socket times out, returns an instance of PEAR_Error.
      */
     function write($data, $blocksize = null)
     {
@@ -371,7 +372,13 @@ class Net_Socket extends PEAR
         }
 
         if (is_null($blocksize) && !OS_WINDOWS) {
-            return @fwrite($this->fp, $data);
+            $r = @fwrite($this->fp, $data);
+            // Check for timeout:
+            $meta_data = $this->getStatus();
+            if (!empty($meta_data['timed_out'])) {
+                return $this->raiseError('timed out');
+            }
+            return $r;
         } else {
             if (is_null($blocksize)) {
                 $blocksize = 1024;
@@ -381,6 +388,11 @@ class Net_Socket extends PEAR
             $size = strlen($data);
             while ($pos < $size) {
                 $written = @fwrite($this->fp, substr($data, $pos, $blocksize));
+                // Check for timeout:
+                $meta_data = $this->getStatus();
+                if (!empty($meta_data['timed_out'])) {
+                    return $this->raiseError('timed out');
+                }
                 if (!$written) {
                     return $written;
                 }
