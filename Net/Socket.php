@@ -258,12 +258,12 @@ class Net_Socket extends PEAR
      * expressed in the sum of seconds and microseconds
      *
      * @param integer $seconds      Seconds.
-     * @param integer $microseconds Microseconds.
+     * @param integer $microseconds Microseconds, optional.
      *
      * @access public
      * @return mixed true on success or a PEAR_Error instance otherwise
      */
-    function setTimeout($seconds, $microseconds)
+    function setTimeout($seconds, $microseconds = 0)
     {
         if (!is_resource($this->fp)) {
             return $this->raiseError('not connected');
