@@ -437,7 +437,7 @@ class Net_Socket extends PEAR
      * @param string $data Data to write
      *
      * @access public
-     * @return mixed fputs result, or an error
+     * @return mixed fwrite() result, or PEAR_Error when not connected
      */
     function writeLine($data)
     {
