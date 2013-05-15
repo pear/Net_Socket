@@ -311,11 +311,14 @@ class Net_Socket extends PEAR
     /**
      * Get a specified line of data
      *
-     * @param int $size ??
+     * @param int $size Reading ends when size - 1 bytes have been read,
+     *                  or a newline or an EOF (whichever comes first).
+     *                  If no size is specified, it will keep reading from
+     *                  the stream until it reaches the end of the line.
      *
      * @access public
-     * @return $size bytes of data from the socket, or a PEAR_Error if
-     *         not connected.
+     * @return mixed $size bytes of data from the socket, or a PEAR_Error if
+     *         not connected. If an error occurs, FALSE is returned.
      */
     function gets($size = null)
     {
