@@ -305,7 +305,7 @@ class Net_Socket extends PEAR
             return $this->raiseError('not connected');
         }
 
-        return stream_get_status($this->fp);
+        return stream_get_meta_data($this->fp);
     }
 
     /**
