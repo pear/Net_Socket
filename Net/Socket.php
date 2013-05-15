@@ -375,13 +375,22 @@ class Net_Socket extends PEAR
         }
 
         if (is_null($blocksize) && !OS_WINDOWS) {
-            $r = @fwrite($this->fp, $data);
-            // Check for timeout:
-            $meta_data = $this->getStatus();
-            if (!empty($meta_data['timed_out'])) {
-                return $this->raiseError('timed out');
+            $written = @fwrite($this->fp, $data);
+
+            // Check for timeout or lost connection
+            if (!$written) {
+                $meta_data = $this->getStatus();
+
+                if (!is_array($meta_data)) {
+                    return $meta_data; // PEAR_Error
+                }
+
+                if (!empty($meta_data['timed_out'])) {
+                    return $this->raiseError('timed out');
+                }
             }
-            return $r;
+
+            return $written;
         } else {
             if (is_null($blocksize)) {
                 $blocksize = 1024;
@@ -391,14 +400,22 @@ class Net_Socket extends PEAR
             $size = strlen($data);
             while ($pos < $size) {
                 $written = @fwrite($this->fp, substr($data, $pos, $blocksize));
-                // Check for timeout:
-                $meta_data = $this->getStatus();
-                if (!empty($meta_data['timed_out'])) {
-                    return $this->raiseError('timed out');
-                }
+
+                // Check for timeout or lost connection
                 if (!$written) {
+                    $meta_data = $this->getStatus();
+
+                    if (!is_array($meta_data)) {
+                        return $meta_data; // PEAR_Error
+                    }
+
+                    if (!empty($meta_data['timed_out'])) {
+                        return $this->raiseError('timed out');
+                    }
+
                     return $written;
                 }
+
                 $pos += $written;
             }
 
