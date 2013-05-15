@@ -259,7 +259,7 @@ class Net_Socket extends PEAR
             return $this->raiseError('not connected');
         }
 
-        return socket_set_timeout($this->fp, $seconds, $microseconds);
+        return stream_set_timeout($this->fp, $seconds, $microseconds);
     }
 
     /**
@@ -305,7 +305,7 @@ class Net_Socket extends PEAR
             return $this->raiseError('not connected');
         }
 
-        return socket_get_status($this->fp);
+        return stream_get_status($this->fp);
     }
 
     /**
