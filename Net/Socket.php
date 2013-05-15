@@ -79,7 +79,7 @@ class Net_Socket extends PEAR
     /**
      * Number of seconds to wait on socket operations before assuming
      * there's no more data. Defaults to no timeout.
-     * @var integer $timeout
+     * @var integer|float $timeout
      */
     var $timeout = null;
 
@@ -177,7 +177,7 @@ class Net_Socket extends PEAR
 
         @ini_set('track_errors', $old_track_errors);
         $this->fp = $fp;
-        $this->setTimeout($this->timeout);
+        $this->setTimeout();
         return $this->setBlocking($this->blocking);
     }
 
@@ -251,15 +251,23 @@ class Net_Socket extends PEAR
      * @param integer $microseconds Microseconds, optional.
      *
      * @access public
-     * @return mixed true on success or a PEAR_Error instance otherwise
+     * @return mixed True on success or false on failure or
+     *               a PEAR_Error instance when not connected
      */
-    function setTimeout($seconds, $microseconds = 0)
+    function setTimeout($seconds = null, $microseconds = null)
     {
         if (!is_resource($this->fp)) {
             return $this->raiseError('not connected');
         }
 
-        return stream_set_timeout($this->fp, $seconds, $microseconds);
+        if ($seconds === null && $microseconds === null) {
+            $seconds      = (int) $this->timeout;
+            $microseconds = (int) (($this->timeout - $seconds) * 1000000);
+        } else {
+            $this->timeout = $seconds + $microseconds/1000000;
+        }
+
+        return stream_set_timeout($this->fp, (int) $seconds, (int) $microseconds);
     }
 
     /**
