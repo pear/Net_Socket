@@ -25,10 +25,10 @@
   <email>alec@php.net</email>
   <active>yes</active>
  </lead>
- <date>2013-05-15</date>
- <time>12:00:00</time>
+ <date>2013-05-16</date>
+ <time>18:30:00</time>
  <version>
-  <release>1.0.11</release>
+  <release>1.0.12</release>
   <api>1.0.10</api>
  </version>
  <stability>
@@ -37,16 +37,11 @@
  </stability>
  <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
  <notes>
-- IPv6 sockets cannot be used (Bug #18231)
-- Socket.php errors when sending large emails through Pear Mail (Bug #18281)
-- 2nd argument of setTimeout() could be optional (Bug #18436)
-- Setting timeout after connect() doesn't work correctly (Bug #18437)
-- Wrong PHP version dependency and socket_* function aliases (Bug #18438)
-- Incomplete gets() method description (Bug #19557)
+- Fixed regression in handling of default (not set) timeout (Bug #19949)
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <file baseinstalldir="/" md5sum="e080a8a49637bedf1dbc931e843ca275" name="Net/Socket.php" role="php" />
+   <file baseinstalldir="/" md5sum="594d6cc38400f9c4e5ed00a8ee2427ac" name="Net/Socket.php" role="php" />
   </dir>
  </contents>
  <dependencies>
@@ -60,26 +55,5 @@
   </required>
  </dependencies>
  <phprelease />
- <changelog>
-  <release>
-   <version>
-    <release>1.0.10</release>
-    <api>1.0.9</api>
-   </version>
-   <stability>
-    <release>stable</release>
-    <api>stable</api>
-   </stability>
-   <date>2010-10-16</date>
-   <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
-   <notes>
-QA release
-- Configurable newline sequence (PEAR Bug #14181)
-- Make $size parameter to gets() optional (PEAR Bug #14433)
-- Don&apos;t overwrite $errstr set by fsockopen (PEAR Bug #14448)
-- Avoid an infinite loop if fwrite() returns 0 (PEAR Bug #14619)
-- CS cleanup (PEAR Bug #14803)
-   </notes>
-  </release>
- </changelog>
+ <changelog />
 </package>
