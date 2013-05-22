@@ -25,10 +25,10 @@
   <email>alec@php.net</email>
   <active>yes</active>
  </lead>
- <date>2013-05-16</date>
- <time>18:30:00</time>
+ <date>2013-05-22</date>
+ <time>19:00:00</time>
  <version>
-  <release>1.0.12</release>
+  <release>1.0.13</release>
   <api>1.0.10</api>
  </version>
  <stability>
@@ -37,11 +37,11 @@
  </stability>
  <license uri="http://www.php.net/license/2_02.txt">PHP License</license>
  <notes>
-- Fixed regression in handling of default (not set) timeout (Bug #19949)
+- Fix PHP warning and invalid handling of IPv6 addresses
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <file baseinstalldir="/" md5sum="594d6cc38400f9c4e5ed00a8ee2427ac" name="Net/Socket.php" role="php" />
+   <file baseinstalldir="/" md5sum="a901ddbea2fe9874896388cc28313a8e" name="Net/Socket.php" role="php" />
   </dir>
  </contents>
  <dependencies>
