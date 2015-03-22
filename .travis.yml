@@ -3,4 +3,4 @@ install:
   - pear install package.xml
 php:
   - 5.4
-script: php -l **/*
+script: pear package
