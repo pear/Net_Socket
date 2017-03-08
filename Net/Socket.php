@@ -617,7 +617,9 @@ class Net_Socket extends PEAR
         }
 
         $data = '';
-        while (!feof($this->fp)) {
+        $timeout = time() + $this->timeout;
+
+        while (!feof($this->fp) && (!$this->timeout || time() < $timeout)) {
             $data .= @fread($this->fp, $this->lineLength);
         }
 
