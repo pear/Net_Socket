@@ -6,7 +6,7 @@
  *
  * LICENSE:
  *
- * Copyright (c) 1997-2003 The PHP Group
+ * Copyright (c) 1997-2017 The PHP Group
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@
  * @package   Net_Socket
  * @author    Stig Bakken <ssb@php.net>
  * @author    Chuck Hagenbuch <chuck@horde.org>
- * @copyright 1997-2003 The PHP Group
+ * @copyright 1997-2017 The PHP Group
  * @license   http://opensource.org/licenses/bsd-license.php BSD-2-Clause
  * @link      http://pear.php.net/packages/Net_Socket
  */
@@ -56,7 +56,7 @@ define('NET_SOCKET_ERROR', 4);
  * @package   Net_Socket
  * @author    Stig Bakken <ssb@php.net>
  * @author    Chuck Hagenbuch <chuck@horde.org>
- * @copyright 1997-2003 The PHP Group
+ * @copyright 1997-2017 The PHP Group
  * @license   http://opensource.org/licenses/bsd-license.php BSD-2-Clause
  * @link      http://pear.php.net/packages/Net_Socket
  */
