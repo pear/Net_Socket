@@ -40,4 +40,4 @@ Run  the tests from a local composer installation:
 
 
 ## License
-BSD license
+BSD-2 license

@@ -27,7 +27,7 @@
  </lead>
  <date>2017-04-06</date>
  <version>
-  <release>1.2.0</release>
+  <release>1.2.1</release>
   <api>1.2.0</api>
  </version>
  <stability>
@@ -36,13 +36,13 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD-2-Clause</license>
  <notes>
-* Change license to BSD-2 Clause
-
-* Request #17526: License change
+* Fix BSD-2 licensing
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" name="Net/Socket.php" role="php" />
+   <file baseinstalldir="/" name="README.md" role="doc" />
+   <file baseinstalldir="/" name="LICENSE" role="doc" />
   </dir>
  </contents>
  <dependencies>
