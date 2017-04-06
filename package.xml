@@ -25,10 +25,10 @@
   <email>alec@php.net</email>
   <active>no</active>
  </lead>
- <date>2017-03-08</date>
+ <date>2017-04-06</date>
  <version>
-  <release>1.1.0</release>
-  <api>1.1.0</api>
+  <release>1.2.0</release>
+  <api>1.2.0</api>
  </version>
  <stability>
   <release>stable</release>
@@ -36,14 +36,9 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD-2-Clause</license>
  <notes>
-* Set minimum PHP version to 5.4.0
-* Set minimum PEAR version to 1.10.1
+* Change license to BSD-2 Clause
 
-* Bug #18262: Incomplete buffer sent with fwrite after bugfix #14619
-* Bug #20113: package.xml does not validate
-* Bug #21031: Warning on connection error(stream_socket_client)
-* PR #7: Fix for "Maximum execution time of 30 seconds exceeded" error
-* PR #8: Make PHP5 compatible
+* Request #17526: License change
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
