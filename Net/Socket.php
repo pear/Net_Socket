@@ -133,8 +133,7 @@ class Net_Socket extends PEAR
         $options = null
     ) {
         if (is_resource($this->fp)) {
-            @fclose($this->fp);
-            $this->fp = null;
+            $this->disconnect(false);
         }
 
         if (!$addr) {
@@ -210,7 +209,32 @@ class Net_Socket extends PEAR
     public function disconnect()
     {
         if (!is_resource($this->fp)) {
-            return $this->raiseError('not connected');
+            if($return_error) {
+                return $this->raiseError('not connected');
+            }
+            return true;
+        }
+
+        if(function_exists('socket_shutdown')){
+            // force some options and execute shutdown, to avoid CLOSE_WAIT status
+            if(defined('IPPROTO_TCP') && defined('TCP_NO_DELAY')) {
+                @socket_set_option($this->fp, IPPROTO_TCP, TCP_NODELAY, 1);
+            }
+            if(defined('SO_KEEPALIVE')) {
+                @socket_set_option($this->fp, SOL_SOCKET, SO_KEEPALIVE, 0);
+            }
+            if(defined('SO_LINGER')) {
+                @socket_set_option($this->fp, SOL_SOCKET, SO_LINGER, array('l_onoff'=>0,'l_linger'=>0));
+            }
+            if(defined('SO_RCVTIMEO')) {
+                @socket_set_option($this->fp, SOL_SOCKET, SO_RCVTIMEO, array("sec"=>0, "usec"=>100));
+            }
+            if(defined('SO_SNDTIMEO')) {
+                @socket_set_option($this->fp, SOL_SOCKET, SO_SNDTIMEO, array("sec"=>0, "usec"=>100));
+            }
+            @socket_set_block($this->fp);
+            @socket_shutdown($this->fp,2);
+            @socket_close($this->fp);
         }
 
         @fclose($this->fp);
