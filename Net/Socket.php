@@ -157,6 +157,14 @@ class Net_Socket extends PEAR
         $errno = 0;
         $errstr = '';
 
+        if (function_exists('error_clear_last')) {
+            $useOldErrorHandling = false;
+            error_clear_last();
+        } else {
+            $useOldErrorHandling = true;
+            $old_track_errors = @ini_set('track_errors', 1);
+        }
+
         if ($timeout <= 0) {
             $timeout = @ini_get('default_socket_timeout');
         }
@@ -184,12 +192,24 @@ class Net_Socket extends PEAR
         }
 
         if (!$fp) {
-            $lastError = error_get_last();
-            if ($errno === 0 && !strlen($errstr) && isset($lastError['message'])) {
-                $errstr = $lastError['message'];
+            if ($errno === 0 && !strlen($errstr)) {
+                $errstr = '';
+                if ($useOldErrorHandling) {
+                    $errstr = $php_errormsg;  
+                    @ini_set('track_errors', $old_track_errors);
+                } else {
+                    $lastError = error_get_last();
+                    if (isset($lastError['message'])) {
+                        $errstr = $lastError['message'];
+                    }
+                }
             }
 
             return $this->raiseError($errstr, $errno);
+        }
+
+        if ($useOldErrorHandling) {
+            @ini_set('track_errors', $old_track_errors);
         }
 
         $this->fp = $fp;
