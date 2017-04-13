@@ -158,10 +158,8 @@ class Net_Socket extends PEAR
         $errstr = '';
 
         if (function_exists('error_clear_last')) {
-            $useOldErrorHandling = false;
             error_clear_last();
         } else {
-            $useOldErrorHandling = true;
             $old_track_errors = @ini_set('track_errors', 1);
         }
 
@@ -194,7 +192,7 @@ class Net_Socket extends PEAR
         if (!$fp) {
             if ($errno === 0 && !strlen($errstr)) {
                 $errstr = '';
-                if ($useOldErrorHandling) {
+                if (isset($old_track_errors)) {
                     $errstr = $php_errormsg ?: '';  
                     @ini_set('track_errors', $old_track_errors);
                 } else {
@@ -208,7 +206,7 @@ class Net_Socket extends PEAR
             return $this->raiseError($errstr, $errno);
         }
 
-        if ($useOldErrorHandling) {
+        if (isset($old_track_errors)) {
             @ini_set('track_errors', $old_track_errors);
         }
 
