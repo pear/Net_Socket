@@ -25,9 +25,9 @@
   <email>alec@php.net</email>
   <active>no</active>
  </lead>
- <date>2017-04-06</date>
+ <date>2017-04-13</date>
  <version>
-  <release>1.2.1</release>
+  <release>1.2.2</release>
   <api>1.2.0</api>
  </version>
  <stability>
@@ -36,7 +36,7 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD-2-Clause</license>
  <notes>
-* Fix BSD-2 licensing
+* Bug #21178: $php_errormsg is deprecated in PHP 7.2
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
